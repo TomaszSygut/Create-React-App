@@ -7,6 +7,7 @@ class App extends Component {
     email: "",
     password: "",
     accept: false,
+    message: "",
 
     errors: {
       username: false,
@@ -54,6 +55,7 @@ class App extends Component {
         email: "",
         password: "",
         accept: false,
+        message: "Konto zostało zarejestrowane",
 
         errors: {
           username: false,
@@ -109,6 +111,14 @@ class App extends Component {
     })
 
   }
+  componentDidUpdate() {
+    if (this.state.message !== '') {
+      setTimeout(() => this.setState({
+        message: ''
+
+      }), 3000);
+    }
+  }
   render() {
     return (
       <div className="App">
@@ -134,6 +144,8 @@ class App extends Component {
           </label>
 
           <button>Zarejestruj się</button>
+
+          {this.state.message ? <h4>{this.state.message} </h4> : ""}
         </form>
 
       </div>
