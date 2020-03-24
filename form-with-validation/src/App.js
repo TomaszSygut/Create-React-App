@@ -46,11 +46,9 @@ class App extends Component {
   }
   handleSubmit = (e) => {
     e.preventDefault()
-    console.log("działa")
-
     const validation = this.formValidation()
 
-    if (true) {
+    if (validation.correct) {
       this.setState({
         username: "",
         email: "",
@@ -67,13 +65,49 @@ class App extends Component {
     } else {
       this.setState({
         errors: {
-          username: false,
-          email: false,
-          password: false,
-          accept: false
+          username: !validation.username,
+          email: !validation.email,
+          password: !validation.password,
+          accept: !validation.accept
         }
       })
     }
+  }
+
+  formValidation = () => {
+    // true - ok
+    // false - zle
+    let username = false;
+    let email = false;
+    let password = false;
+    let accept = false;
+    let correct = false;
+
+    if (this.state.username.length > 4 && this.state.username.indexOf(' ') === -1) {
+      username = true;
+    }
+    if (this.state.email.indexOf('@') !== -1) {
+      email = true;
+    }
+    if (this.state.password.length >= 8) {
+      password = true;
+    }
+    if (this.state.accept) {
+      accept = true;
+    }
+    if (username && email && password && accept) {
+      correct = true
+    }
+
+    return ({
+      correct,
+      username,
+      email,
+      accept,
+      password
+
+    })
+
   }
   render() {
     return (
