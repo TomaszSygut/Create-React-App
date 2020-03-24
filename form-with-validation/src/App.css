@@ -1,0 +1,26 @@
+form {}
+
+label {
+  display: block;
+  margin-left: 15px;
+}
+
+input {
+  margin-left: 10px;
+
+
+}
+
+button {
+  margin-left: 100px;
+  padding: 5px;
+  margin-top: 15px;
+}
+
+span {
+  color: red;
+  font-size: 10px;
+
+  top: 1vh;
+  margin-left: 10px;
+}
